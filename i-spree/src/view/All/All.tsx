@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 
 export const All: FC = () => {
   const global = useContext(GlobalState);
-  const getAllBaskets = async () => {
+  const fetchBaskets = async () => {
     try {
       const baskets = await getBaskets();
       return await global.globalGetBaskets(baskets.data);
@@ -16,7 +16,7 @@ export const All: FC = () => {
   };
 
   useEffect(() => {
-    getBaskets();
+    fetchBaskets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(global.globalBaskets);

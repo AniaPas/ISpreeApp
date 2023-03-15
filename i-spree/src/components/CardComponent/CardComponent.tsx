@@ -10,9 +10,18 @@ export const CardComponent = () => {
       <CardActionArea>
         <CardMedia
           component='img'
-          height='140'
-          image='/static/images/cards/contemplative-reptile.jpg'
-          alt='green iguana'
+          sx={{
+            width: 200,
+
+            filter: "grayscale(1)",
+            backgroundColor: "rgba(61, 61, 61, 1)",
+            transition: "all 0.45s",
+            "&:hover": {
+              filter: "grayscale(0)",
+            },
+          }}
+          alt={`Book cover `}
+          image={`https://via.placeholder.com/150`}
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
