@@ -1,0 +1,74 @@
+{
+  "basket": [
+    {
+      "name": "food",
+      "products": [
+        {
+          "product_name": "tomato sauce",
+          "regular_price": 8.99,
+          "discount_price": 6.99
+        },
+        {
+          "product_name": "olive oil",
+          "regular_price": 13.99,
+          "discount_price": 10.99
+        },
+        {
+          "product_name": "pasta",
+          "regular_price": 2.99,
+          "discount_price": 2.5
+        }
+      ]
+    },
+    {
+      "name": "clothes",
+      "products": [
+        {
+          "product_name": "tomato sauce",
+          "regular_price": 8.99,
+          "discount_price": 6.99
+        },
+        {
+          "product_name": "olive oil",
+          "regular_price": 13.99,
+          "discount_price": 10.99
+        },
+        {
+          "product_name": "pasta",
+          "regular_price": 2.99,
+          "discount_price": 2.5
+        },
+        {
+          "product_name": "pasta",
+          "regular_price": 2.99,
+          "discount_price": 2.5
+        }
+      ]
+    },
+    {
+      "name": "cleaning",
+      "products": [
+        {
+          "product_name": "tomato sauce",
+          "regular_price": 8.99,
+          "discount_price": 6.99
+        },
+        {
+          "product_name": "olive oil",
+          "regular_price": 13.99,
+          "discount_price": 10.99
+        },
+        {
+          "product_name": "pasta",
+          "regular_price": 2.99,
+          "discount_price": 2.5
+        },
+        {
+          "product_name": "pasta",
+          "regular_price": 2.99,
+          "discount_price": 2.5
+        }
+      ]
+    }
+  ]
+}
