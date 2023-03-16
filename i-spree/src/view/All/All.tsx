@@ -21,24 +21,12 @@ export const All: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(global.globalBaskets);
-  const howManyCards = global.globalBaskets.length <= 2 ? 6 : 4;
+  //const howManyCards = global.globalBaskets.length <= 2 ? 6 : 4;
   const showBasketCards: JSX.Element[] = global.globalBaskets.map((item) => {
     return (
-      <Grid item xs={12} md={howManyCards} key={item.id}>
+      <Grid item md={3} key={item.id}>
         <CardComponent id={item.id} name={item.name} products={item.products}>
-          <Button
-            size='small'
-            color='primary'
-            sx={{
-              fontWeight: 600,
-              transition: "all 0.45s",
-              "&:hover": {
-                backgroundColor: "#ffc107",
-              },
-            }}
-          >
-            Show details
-          </Button>
+          <Button></Button>
         </CardComponent>
       </Grid>
     );

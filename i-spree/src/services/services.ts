@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = "http://localhost:4000";
+const API = "http://localhost:3000";
 const getBaskets = () => {
   const apiBaskets = `${API}/basket`;
   return axios.get(apiBaskets);
