@@ -4,10 +4,15 @@ export interface ProductInterface {
   regular_price: number;
   discount_price: number;
 }
-export interface BasketsInterface {}
+export interface BasketsInterface {
+  id: number;
+  name: string;
+  products: ProductInterface[];
+  children: React.ReactNode;
+}
 
 interface GlobalStateInterface {
-  globalBaskets: BasketsInterface;
+  globalBaskets: BasketsInterface[];
   globalGetBaskets: (data: BasketsInterface[]) => void;
 }
 interface GlobalStoreInterface {
