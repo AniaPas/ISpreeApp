@@ -8,4 +8,8 @@ const getOneCart = (id: string) => {
   const apiOneBasket = `${API}/carts/${id}`;
   return axios.get(apiOneBasket);
 };
-export { getCarts, getOneCart };
+const deleteCart = (id: string) => {
+  const apiCart = `${API}/carts/${id}`;
+  return axios.delete(apiCart);
+};
+export { getCarts, getOneCart, deleteCart };

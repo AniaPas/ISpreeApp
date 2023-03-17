@@ -11,7 +11,7 @@ export interface ProductInterface {
 export interface CartInterface {
   id: number;
   products: ProductInterface[];
-  children: React.ReactNode;
+  //children: React.ReactNode;
 }
 
 interface GlobalStateInterface {
