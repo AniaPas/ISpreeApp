@@ -1,11 +1,11 @@
 import axios from "axios";
-const API = "http://localhost:4000";
-const getBaskets = () => {
-  const apiBaskets = `${API}/basket`;
+const API = "https://dummyjson.com";
+const getCarts = () => {
+  const apiBaskets = `${API}/carts`;
   return axios.get(apiBaskets);
 };
-const getOneBasket = (id: string) => {
-  const apiOneBasket = `${API}/basket/${id}`;
+const getOneCart = (id: string) => {
+  const apiOneBasket = `${API}/carts/${id}`;
   return axios.get(apiOneBasket);
 };
-export { getBaskets, getOneBasket };
+export { getCarts, getOneCart };

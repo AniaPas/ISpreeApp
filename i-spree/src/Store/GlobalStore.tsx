@@ -1,37 +1,40 @@
 import { useState, createContext, FC } from "react";
 export interface ProductInterface {
-  product_name: string;
-  regular_price: number;
-  discount_price: number;
-}
-export interface BasketsInterface {
   id: number;
-  name: string;
+  title: string;
+  price: number;
+  quantity: number;
+  total: number;
+  discountPercentage: number;
+  discountedPrice: number;
+}
+export interface CartInterface {
+  id: number;
   products: ProductInterface[];
   children: React.ReactNode;
 }
 
 interface GlobalStateInterface {
-  globalBaskets: BasketsInterface[];
-  globalGetBaskets: (data: BasketsInterface[]) => void;
+  globalCarts: CartInterface[];
+  globalGetCarts: (data: CartInterface[]) => void;
 }
 interface GlobalStoreInterface {
   children: JSX.Element | JSX.Element[];
 }
 export const GlobalState = createContext<GlobalStateInterface>({
-  globalBaskets: [],
-  globalGetBaskets: () => {},
+  globalCarts: [],
+  globalGetCarts: () => {},
 });
 
 export const GlobalStore: FC<GlobalStoreInterface> = (props) => {
-  const [baskets, setBaskets] = useState<BasketsInterface[]>([]);
+  const [carts, setCarts] = useState<CartInterface[]>([]);
 
-  const getBaskets = (data: BasketsInterface[]) => {
-    setBaskets(data);
+  const getCarts = (data: CartInterface[]) => {
+    setCarts(data);
   };
   const providerValue = {
-    globalBaskets: baskets,
-    globalGetBaskets: getBaskets,
+    globalCarts: carts,
+    globalGetCarts: getCarts,
   };
   return (
     <GlobalState.Provider value={providerValue}>

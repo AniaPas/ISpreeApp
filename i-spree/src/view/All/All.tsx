@@ -1,5 +1,5 @@
 import { useEffect, useContext, FC } from "react";
-import { getBaskets } from "../../services/services";
+import { getCarts } from "../../services/services";
 import { GlobalState } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 // mui
@@ -9,8 +9,8 @@ export const All: FC = () => {
   const global = useContext(GlobalState);
   const fetchBaskets = async () => {
     try {
-      const baskets = await getBaskets();
-      return await global.globalGetBaskets(baskets.data);
+      const carts = await getCarts();
+      return await global.globalGetCarts(carts.data.carts);
     } catch (e) {
       console.log(e);
     }
@@ -20,25 +20,12 @@ export const All: FC = () => {
     fetchBaskets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(global.globalBaskets);
-  const howManyCards = global.globalBaskets.length <= 2 ? 6 : 4;
-  const showBasketCards: JSX.Element[] = global.globalBaskets.map((item) => {
+  console.log(global.globalCarts);
+  const showCards: JSX.Element[] = global.globalCarts.map((item) => {
     return (
-      <Grid item xs={12} md={howManyCards} key={item.id}>
-        <CardComponent id={item.id} name={item.name} products={item.products}>
-          <Button
-            size='small'
-            color='primary'
-            sx={{
-              fontWeight: 600,
-              transition: "all 0.45s",
-              "&:hover": {
-                backgroundColor: "#ffc107",
-              },
-            }}
-          >
-            Show details
-          </Button>
+      <Grid item xs={12} sm={6} md={4} key={item.id}>
+        <CardComponent id={item.id} products={item.products}>
+          <Button></Button>
         </CardComponent>
       </Grid>
     );
@@ -47,7 +34,7 @@ export const All: FC = () => {
     <>
       {" "}
       <Grid container spacing={3}>
-        {showBasketCards}
+        {showCards}
       </Grid>
     </>
   );
