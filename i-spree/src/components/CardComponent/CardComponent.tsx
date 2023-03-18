@@ -17,7 +17,7 @@ export const CardComponent: FC<CartInterface> = ({ id, products }) => {
   //   (item) => `${item.title.toLowerCase()}, `
   //);
   return (
-    <Card sx={{ maxWidth: 800 }}>
+    <Card sx={{ maxWidth: 1100 }}>
       <CardMedia
         component='img'
         sx={{

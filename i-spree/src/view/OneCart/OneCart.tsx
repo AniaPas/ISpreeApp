@@ -4,9 +4,9 @@ import { getOneCart, deleteCart } from "../../services/services";
 import { GlobalState } from "../../Store/GlobalStore";
 import { CartInterface } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
+import { Products } from "../../components/Products/Products";
 //MUI
 import { Button, Grid, Box } from "@mui/material/";
-import CardActions from "@mui/material/CardActions";
 
 //const { id } = useParams();
 export const OneCart: FC = () => {
@@ -49,9 +49,9 @@ export const OneCart: FC = () => {
   };
   console.log(cart);
 
-  const prod = cart.products;
-  console.log(prod);
-  const createProductList = prod?.map(
+  const productList = cart.products;
+  console.log(productList);
+  const createProductList = productList?.map(
     (item) => `${item.title.toLowerCase()}, `
   );
   console.log(createProductList);
@@ -61,6 +61,7 @@ export const OneCart: FC = () => {
         <Grid item xs={12} md={6}>
           <CardComponent id={cart.id} products={cart.products} />
         </Grid>
+
         <Button
           size='small'
           color='primary'
@@ -70,6 +71,9 @@ export const OneCart: FC = () => {
         </Button>
         <Grid item xs={12} md={6}>
           <p>{createProductList}</p>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Products products={cart.products} />
         </Grid>
       </Box>
     </>
