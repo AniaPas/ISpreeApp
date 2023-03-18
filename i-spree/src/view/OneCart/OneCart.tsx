@@ -5,14 +5,14 @@ import { GlobalState } from "../../Store/GlobalStore";
 import { CartInterface } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 //MUI
-import { Button } from "@mui/material/";
+import { Button, Grid } from "@mui/material/";
 import CardActions from "@mui/material/CardActions";
 
 //const { id } = useParams();
 export const OneCart: FC = () => {
   interface CartInterface {
-    id: number;
-    products: [];
+    id?: number;
+    products: any[];
   }
 
   const [cart, setCart] = useState<CartInterface>({} as CartInterface);
@@ -20,20 +20,20 @@ export const OneCart: FC = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchOneCart = () => {
-      if (id) {
-        const cart = getOneCart(id);
-        cart
-          .then((item) => {
-            setCart(item.data);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      }
+      const cart = getOneCart(id);
+      cart
+        .then((item) => {
+          setCart(item.data);
+          // return item.data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     };
+
     fetchOneCart();
   }, [id]);
-  //console.log(item.data)
+
   const removeCart = (id: number) => {
     deleteCart(id.toString())
       .then((res) => {
@@ -47,13 +47,33 @@ export const OneCart: FC = () => {
         navigate("/");
       });
   };
+  console.log(cart);
+
+  const prod = cart.products;
+  console.log(prod);
+  const createProductList = prod?.map(
+    (item) => `${item.title.toLowerCase()}, `
+  );
+  console.log(createProductList);
   return (
-    <>
+    <Grid item xs={12} md={6}>
       <CardComponent id={cart.id} products={cart.products} />
 
+      <Button
+        size='small'
+        color='primary'
+        onClick={() => removeCart(cart.id)}
+      ></Button>
       <Button size='small' color='primary' onClick={() => removeCart(cart.id)}>
         REMOVE AND GO BACK TO CARTS
       </Button>
-    </>
+      <p>{createProductList}</p>
+      <Button size='small' color='primary' onClick={() => removeCart(cart.id)}>
+        REMOVE AND GO BACK TO CARTS
+      </Button>
+      <Button size='small' color='primary' onClick={() => removeCart(cart.id)}>
+        REMOVE AND GO BACK TO CARTS
+      </Button>
+    </Grid>
   );
 };

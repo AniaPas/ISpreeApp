@@ -17,6 +17,8 @@ export interface CartInterface {
 interface GlobalStateInterface {
   globalCarts: CartInterface[];
   globalGetCarts: (data: CartInterface[]) => void;
+  // globalOneCart: CartInterface;
+  // globalGetOneCart: (data: CartInterface) => void;
 }
 interface GlobalStoreInterface {
   children: JSX.Element | JSX.Element[];
@@ -24,6 +26,8 @@ interface GlobalStoreInterface {
 export const GlobalState = createContext<GlobalStateInterface>({
   globalCarts: [],
   globalGetCarts: () => {},
+  // globalOneCart: {},
+  // globalGetOneCart: () => {},
 });
 
 export const GlobalStore: FC<GlobalStoreInterface> = (props) => {
@@ -32,9 +36,16 @@ export const GlobalStore: FC<GlobalStoreInterface> = (props) => {
   const getCarts = (data: CartInterface[]) => {
     setCarts(data);
   };
+  // const [oneCart, setOneCart] = useState<CartInterface>();
+
+  // const getOneCart = (data: CartInterface) => {
+  //   setOneCart(data);
+  // };
   const providerValue = {
     globalCarts: carts,
     globalGetCarts: getCarts,
+    // globalOneCart: oneCart,
+    // globalGetOneCart: getOneCart,
   };
   return (
     <GlobalState.Provider value={providerValue}>

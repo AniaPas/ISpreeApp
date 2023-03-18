@@ -12,7 +12,7 @@ export const All: FC = () => {
   const fetchBaskets = async () => {
     try {
       const carts = await getCarts();
-      return await global.globalGetCarts(carts.data.carts);
+      return global.globalGetCarts(carts.data.carts);
     } catch (e) {
       console.log(e);
     }
@@ -31,7 +31,10 @@ export const All: FC = () => {
       <Grid item xs={12} sm={6} md={4} key={item.id}>
         <div onClick={() => showMore(item.id!)}>
           <CardActionArea>
-            <CardComponent id={item.id} products={item.products} />
+            <CardComponent
+              id={item.id}
+              products={item.products}
+            ></CardComponent>
           </CardActionArea>
         </div>
       </Grid>

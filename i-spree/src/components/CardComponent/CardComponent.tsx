@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { useContext, FC } from "react";
 import { CartInterface } from "../../Store/GlobalStore";
 // MUI
 import Card from "@mui/material/Card";
@@ -7,8 +7,15 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { CardActionArea } from "@mui/material";
+import { GlobalState } from "../../Store/GlobalStore";
 
 export const CardComponent: FC<CartInterface> = ({ id, products }) => {
+  // const global = useContext(GlobalState);
+  // const oneCart = global.globalOneCart;
+
+  // const createProductList = products.map(
+  //   (item) => `${item.title.toLowerCase()}, `
+  //);
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -30,13 +37,9 @@ export const CardComponent: FC<CartInterface> = ({ id, products }) => {
         <Typography gutterBottom variant='h5' component='div'>
           cart {id}
         </Typography>
-        <Typography gutterBottom variant='h5' component='div'>
-          products
-        </Typography>
 
         <Typography variant='body2' color='text.secondary'>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {/* {createProductList} */}
         </Typography>
       </CardContent>
     </Card>
