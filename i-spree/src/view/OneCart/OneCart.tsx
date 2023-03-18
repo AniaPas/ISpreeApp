@@ -57,7 +57,7 @@ export const OneCart: FC = () => {
   console.log(createProductList);
   return (
     <>
-      <Box sx={{ flexGrow: 1, justifyContent: "center" }}>
+      <Box sx={{ flexGrow: 1 }}>
         <Grid item xs={12} md={6}>
           <CardComponent id={cart.id} products={cart.products} />
         </Grid>
