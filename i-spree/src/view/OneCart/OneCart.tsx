@@ -5,7 +5,7 @@ import { GlobalState } from "../../Store/GlobalStore";
 import { CartInterface } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 //MUI
-import { Button, Grid } from "@mui/material/";
+import { Button, Grid, Box } from "@mui/material/";
 import CardActions from "@mui/material/CardActions";
 
 //const { id } = useParams();
@@ -56,24 +56,22 @@ export const OneCart: FC = () => {
   );
   console.log(createProductList);
   return (
-    <Grid item xs={12} md={6}>
-      <CardComponent id={cart.id} products={cart.products} />
-
-      <Button
-        size='small'
-        color='primary'
-        onClick={() => removeCart(cart.id)}
-      ></Button>
-      <Button size='small' color='primary' onClick={() => removeCart(cart.id)}>
-        REMOVE AND GO BACK TO CARTS
-      </Button>
-      <p>{createProductList}</p>
-      <Button size='small' color='primary' onClick={() => removeCart(cart.id)}>
-        REMOVE AND GO BACK TO CARTS
-      </Button>
-      <Button size='small' color='primary' onClick={() => removeCart(cart.id)}>
-        REMOVE AND GO BACK TO CARTS
-      </Button>
-    </Grid>
+    <>
+      <Box sx={{ flexGrow: 1, justifyContent: "center" }}>
+        <Grid item xs={12} md={6}>
+          <CardComponent id={cart.id} products={cart.products} />
+        </Grid>
+        <Button
+          size='small'
+          color='primary'
+          onClick={() => removeCart(cart.id)}
+        >
+          REMOVE AND GO BACK TO CARTS
+        </Button>
+        <Grid item xs={12} md={6}>
+          <p>{createProductList}</p>
+        </Grid>
+      </Box>
+    </>
   );
 };
