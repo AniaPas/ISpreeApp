@@ -14,7 +14,12 @@ interface ProductsProps {
 }
 export const Products: FC<ProductsProps> = ({ products }) => {
   return (
-    <LineChart width={500} height={300} data={products}>
+    <LineChart
+      width={600}
+      height={300}
+      data={products}
+      margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+    >
       <XAxis
         dataKey='title'
         style={{

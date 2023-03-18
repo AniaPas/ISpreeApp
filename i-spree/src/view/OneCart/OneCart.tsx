@@ -57,11 +57,19 @@ export const OneCart: FC = () => {
   console.log(createProductList);
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Grid
+        container
+        direction='row'
+        justifyContent='space-between'
+        alignItems='center'
+      >
         <Grid item xs={12} md={6}>
           <CardComponent id={cart.id} products={cart.products} />
         </Grid>
 
+        <Grid item xs={12} md={6}>
+          <p>{createProductList}</p>
+        </Grid>
         <Button
           size='small'
           color='primary'
@@ -70,12 +78,9 @@ export const OneCart: FC = () => {
           REMOVE AND GO BACK TO CARTS
         </Button>
         <Grid item xs={12} md={6}>
-          <p>{createProductList}</p>
-        </Grid>
-        <Grid item xs={12} md={6}>
           <Products products={cart.products} />
         </Grid>
-      </Box>
+      </Grid>
     </>
   );
 };
