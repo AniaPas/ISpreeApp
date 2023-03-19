@@ -11,10 +11,14 @@ export interface ProductInterface {
 export interface CartInterface {
   id: number;
   products: ProductInterface[];
-
-  //children: React.ReactNode;
 }
-
+export interface PayloadInterface {
+  userId: number;
+  products: [{ id: number; quantity: number }];
+}
+export interface RequestHeadersInterface {
+  headers: { "Content-Type": string };
+}
 interface GlobalStateInterface {
   globalCarts: CartInterface[];
   globalGetCarts: (data: CartInterface[]) => void;
