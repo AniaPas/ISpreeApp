@@ -1,4 +1,5 @@
 import { FormEvent, useRef, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PayloadInterface } from "../../Store/GlobalStore";
 import { GlobalState } from "../../Store/GlobalStore";
 import { addCart, getCarts } from "../../services/services";
@@ -19,7 +20,10 @@ import {
 import { Payload } from "recharts/types/component/DefaultLegendContent";
 
 export const Add = () => {
-  const [isCartInvalid, setCartInvalid] = useState(true);
+  // const [isCartInvalid, setCartInvalid] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
   const form = useRef<HTMLCollection>();
   const globalState = useContext(GlobalState);
   const getAllCarts = async () => {
@@ -68,38 +72,39 @@ export const Add = () => {
           },
         ],
       };
-      // const getCartId = console.log(
-      //   globalState.globalCarts.map((item) => item.id)
-      // );
-      // const isCartIDUnique = () => {
-      //   if(payload.userId['formFields[0] as HTMLInputElement'].value===getCartId)
-      // };
-      const isValid = isObjComplete(payload);
+
+      // const isValid = isObjComplete(payload);
       // globalState.globalCarts
       //   .map((item) => item.id)
       //   .indexOf(+payload.userId) === -1;
-      setCartInvalid(isValid);
-      if (isValid) {
-        addCart(payload)
-          .then((res) => {
-            console.log(res);
-          })
+      // setCartInvalid(isValid);
+      // console.log(isValid);
+      // if (isValid) {
+      addCart(payload)
+        .then((res) => {
+          console.log(res);
+          setSuccess(res);
+          setError(null);
+        })
 
-          .catch((e) => {
-            console.error(e);
-            {
-              <p>You have not filled the fields correctly!</p>;
-            }
-          });
-      }
+        .catch((e) => {
+          console.error(e);
+          setError(e);
+          setSuccess(null);
+        });
+      // .finally(() => {
+      //   navigate("/");
+      // });
     }
   };
-
+  const getErrorView = () => {
+    return <div>Oh no! Something went wrong. {error.message}</div>;
+  };
   const idForUser = createId("user");
   // const idForProducts = createId("products");
   const idforProduct = createId("id");
   const idforQuantity = createId("quantity");
-  console.log(isCartInvalid);
+
   return (
     // <div>Ania</div>
 
@@ -124,7 +129,14 @@ export const Add = () => {
         <FormHelperText id='my-helper-text'>How many products?</FormHelperText>
       </FormControl>
 
-      {isCartInvalid && <p>You have not filled the fields correctly!</p>}
+      {error && (
+        <p>
+          Oh-oh! You have not filled the fields correctly! Are you sure you
+          provided your ID numbers rather than letters?? Error details:
+          {error.message}
+        </p>
+      )}
+      {success && <p>Yay!</p>}
       <div>
         <Button
           type='submit'
