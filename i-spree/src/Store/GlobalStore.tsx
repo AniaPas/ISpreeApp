@@ -13,12 +13,12 @@ export interface CartInterface {
   products: ProductInterface[];
 }
 export interface PayloadInterface {
-  userId: number;
-  products: [{ id: number; quantity: number }];
+  userId: string;
+  products: { id: string; quantity: string }[];
 }
-export interface RequestHeadersInterface {
-  headers: { "Content-Type": string };
-}
+// export interface RequestHeadersInterface {
+//   headers: { "Content-Type": string };
+// }
 interface GlobalStateInterface {
   globalCarts: CartInterface[];
   globalGetCarts: (data: CartInterface[]) => void;
