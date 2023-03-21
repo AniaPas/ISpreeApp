@@ -104,37 +104,43 @@ export const Add = () => {
   // const idForProducts = createId("products");
   const idforProduct = createId("id");
   const idforQuantity = createId("quantity");
-
+  const sx = { color: "#8bc34a", paddingBottom: 5, paddingTop: 5 };
   return (
-    // <div>Ania</div>
-
     <Box component='form' ref={form} display='flex' flexDirection='column'>
-      <FormControl color="secondary">
-        <InputLabel htmlFor={idForUser}>Provide your ID number</InputLabel>
-        <Input id={idForUser} />
-        <FormHelperText id='my-helper-text'>Enter your ID</FormHelperText>
+      <FormControl>
+        <InputLabel sx={sx} htmlFor={idForUser}>
+          Provide your ID number*
+        </InputLabel>
+        <Input sx={sx} id={idForUser} />
+        <FormHelperText id='my-helper-text' sx={sx}>
+          Enter your ID*
+        </FormHelperText>
       </FormControl>
       <FormControl>
-        <InputLabel htmlFor={idforProduct}>Product ID</InputLabel>
-        <Input id={idforProduct} />
-        <FormHelperText id='my-helper-text'>
+        <InputLabel sx={sx} htmlFor={idforProduct}>
+          Product ID
+        </InputLabel>
+        <Input sx={sx} id={idforProduct} />
+        <FormHelperText sx={sx} id='my-helper-text'>
           Provide the ptoduct ID
         </FormHelperText>
       </FormControl>
       <FormControl>
-        <InputLabel htmlFor={idforQuantity}>
+        <InputLabel htmlFor={idforQuantity} sx={sx}>
           Provide product quantity
         </InputLabel>
-        <Input id={idForUser} />
-        <FormHelperText id='my-helper-text'>How many products?</FormHelperText>
+        <Input id={idForUser} sx={sx} />
+        <FormHelperText id='my-helper-text' sx={sx}>
+          How many products?
+        </FormHelperText>
       </FormControl>
 
       {error && (
-        <p>
+        <Typography color='secondary' sx={{ paddingBottom: 5, paddingTop: 5 }}>
           Oh-oh! You have not filled the fields correctly! Are you sure you
           provided your ID numbers rather than letters?? Error details:
           {error.message}
-        </p>
+        </Typography>
       )}
       {success && <p>Yay!</p>}
       <div>
@@ -142,16 +148,6 @@ export const Add = () => {
           type='submit'
           variant='contained'
           color='secondary'
-          sx={{
-            backgroundColor: "#ffc107",
-            boxShadow: "0 0 0",
-            fontWeight: 600,
-            transition: "all 0.45s",
-            "&:hover": {
-              backgroundColor: "transparent",
-              boxShadow: "0 0 0",
-            },
-          }}
           onClick={(event) => submitCart(event)}
         >
           Save

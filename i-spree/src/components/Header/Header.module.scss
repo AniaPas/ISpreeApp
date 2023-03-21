@@ -1,0 +1,43 @@
+@import "./../../variables/_variables.scss";
+
+.headerContainer {
+  display: flex;
+  position: relative;
+  padding: 0, 15px;
+  background-color: $greyTrans;
+  border-radius: 4px 4px 0 0;
+  .shopsImg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logoWrapper {
+    position: absolute;
+    background-color: $greyTrans;
+    transform: translateY(40%);
+    height: 7rem;
+    width: 100%;
+    z-index: 50;
+    .logo {
+      color: $secondary;
+      position: absolute;
+      font-size: 3rem;
+      font-family: "Libre Barcode 128 Text";
+      line-height: 1.4rem;
+      z-index: 200;
+      transform: translate(5vh, 6vh);
+      text-decoration: none;
+      transition: all 0.45s;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  @media (max-width: 535px) {
+    .logoWrapper {
+      display: none;
+    }
+  }
+}
