@@ -43,7 +43,7 @@ export const All: FC = () => {
   return (
     <>
       {" "}
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ marginBottom: 10 }}>
         {showCards}
       </Grid>
     </>
