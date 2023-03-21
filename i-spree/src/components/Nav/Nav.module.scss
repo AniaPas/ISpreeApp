@@ -1,10 +1,10 @@
 @import "./../../variables/_variables.scss";
+
 .link {
   font-size: 22px;
   color: $black;
   text-decoration: none;
   transition: all 0.45s;
-
   &:hover {
     color: $white;
   }

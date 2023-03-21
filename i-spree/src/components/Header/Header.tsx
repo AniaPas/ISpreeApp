@@ -3,7 +3,7 @@ import shops from "./shops.jpg";
 import style from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header: FC = () => {
   return (
     <div className={style.headerContainer}>
       <img className={style.shopsImg} src={shops} alt='womanShopping' />

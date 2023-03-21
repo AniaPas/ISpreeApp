@@ -1,11 +1,15 @@
+//Hooks, FormEvent
 import { FormEvent, useRef, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { PayloadInterface } from "../../Store/GlobalStore";
-import { GlobalState } from "../../Store/GlobalStore";
+
+//Iterface, GlobalState
+import { PayloadInterface, GlobalState } from "../../Store/GlobalStore";
+
+//Services
 import { addCart, getCarts } from "../../services/services";
 
 //uniqid
 import uniqid from "uniqid";
+
 //MUI
 import {
   Box,
@@ -14,16 +18,12 @@ import {
   FormHelperText,
   Input,
   InputLabel,
-  TextField,
   Typography,
 } from "@mui/material";
-import { Payload } from "recharts/types/component/DefaultLegendContent";
 
 export const Add = () => {
-  // const [isCartInvalid, setCartInvalid] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const navigate = useNavigate();
   const form = useRef<HTMLCollection>();
   const globalState = useContext(GlobalState);
   const getAllCarts = async () => {
@@ -38,13 +38,6 @@ export const Add = () => {
   const createId = (uniqName: string) => {
     return `${uniqid()} ${uniqName}`;
   };
-  const isObjComplete = (obj: PayloadInterface): boolean => {
-    const objKeys = Object.keys(obj);
-    const isComplete = objKeys.every((item: string) => {
-      return obj.userId !== null && obj.products !== null;
-    });
-    return isComplete;
-  };
 
   const submitCart = (event: FormEvent) => {
     event.preventDefault();
@@ -53,7 +46,6 @@ export const Add = () => {
       const formFields = Array.from(form.current).filter((item) => {
         if (
           item.id.search("userId") > -1 ||
-          // item.id.search("products") > -1 ||
           item.id.search("id") > -1 ||
           item.id.search("quantity") > -1
         ) {
@@ -73,35 +65,21 @@ export const Add = () => {
         ],
       };
 
-      // const isValid = isObjComplete(payload);
-      // globalState.globalCarts
-      //   .map((item) => item.id)
-      //   .indexOf(+payload.userId) === -1;
-      // setCartInvalid(isValid);
-      // console.log(isValid);
-      // if (isValid) {
       addCart(payload)
         .then((res) => {
           console.log(res);
           setSuccess(res);
           setError(null);
         })
-
         .catch((e) => {
           console.error(e);
           setError(e);
           setSuccess(null);
         });
-      // .finally(() => {
-      //   navigate("/");
-      // });
     }
   };
-  const getErrorView = () => {
-    return <div>Oh no! Something went wrong. {error.message}</div>;
-  };
+
   const idForUser = createId("user");
-  // const idForProducts = createId("products");
   const idforProduct = createId("id");
   const idforQuantity = createId("quantity");
   const sx = { color: "#8bc34a", paddingBottom: 5, paddingTop: 5 };
@@ -134,7 +112,6 @@ export const Add = () => {
           How many products?
         </FormHelperText>
       </FormControl>
-
       {error && (
         <Typography color='secondary' sx={{ paddingBottom: 5, paddingTop: 5 }}>
           Oh-oh! You have not filled the fields correctly! Are you sure you
@@ -142,7 +119,7 @@ export const Add = () => {
           {error.message}
         </Typography>
       )}
-      {success && <p>Yay!</p>}
+      {success && <p>Yay We've made it!</p>}
       <div>
         <Button
           type='submit'

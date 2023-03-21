@@ -1,9 +1,18 @@
+//Hooks, FC
 import { useEffect, useContext, FC } from "react";
+
+//Router
 import { useNavigate } from "react-router-dom";
+
+//Services
 import { getCarts } from "../../services/services";
+
+//GlobalState
 import { GlobalState } from "../../Store/GlobalStore";
+
+//Components
 import { CardComponent } from "../../components/CardComponent/CardComponent";
-// mui
+// MUI
 import { Grid, CardActionArea } from "@mui/material";
 
 export const All: FC = () => {

@@ -1,4 +1,4 @@
-import { useContext, FC } from "react";
+import { FC } from "react";
 import { CartInterface } from "../../Store/GlobalStore";
 // MUI
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -6,17 +6,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { CardActionArea } from "@mui/material";
-import { GlobalState } from "../../Store/GlobalStore";
 
-export const CardComponent: FC<CartInterface> = ({ id, products }) => {
-  // const global = useContext(GlobalState);
-  // const oneCart = global.globalOneCart;
-
-  // const createProductList = products.map(
-  //   (item) => `${item.title.toLowerCase()}, `
-  //);
+export const CardComponent: FC<CartInterface> = ({ id }) => {
   return (
     <Card
       sx={{

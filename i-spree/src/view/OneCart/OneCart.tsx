@@ -1,14 +1,19 @@
-import { useState, useEffect, useContext, FC } from "react";
+//Hooks, FC
+import { useState, useEffect, FC } from "react";
+
+//Router
 import { useNavigate, useParams } from "react-router-dom";
+
+//Services
 import { getOneCart, deleteCart } from "../../services/services";
-import { GlobalState } from "../../Store/GlobalStore";
-import { CartInterface } from "../../Store/GlobalStore";
+
+//Components
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 import { Products } from "../../components/Products/Products";
-//MUI
-import { Button, Grid, Box, Typography } from "@mui/material/";
 
-//const { id } = useParams();
+//MUI
+import { Button, Grid, Typography } from "@mui/material/";
+
 export const OneCart: FC = () => {
   interface CartInterface {
     id?: number;
@@ -24,7 +29,6 @@ export const OneCart: FC = () => {
       cart
         .then((item) => {
           setCart(item.data);
-          // return item.data;
         })
         .catch((err) => {
           console.error(err);
@@ -68,7 +72,6 @@ export const OneCart: FC = () => {
         <Grid item xs={12} md={6}>
           <CardComponent id={cart.id} products={cart.products} />
         </Grid>
-
         <Grid item xs={12} md={6}>
           <Typography color='secondary' fontSize='large'>
             {createProductList}

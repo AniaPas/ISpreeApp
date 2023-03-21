@@ -1,4 +1,7 @@
+//Axios
 import axios from "axios";
+
+//Interface
 import { PayloadInterface } from "../Store/GlobalStore";
 
 const API = "https://dummyjson.com";
