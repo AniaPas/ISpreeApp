@@ -1,16 +1,18 @@
 import { useEffect, useContext, FC } from "react";
-import { getBaskets } from "../../services/services";
+import { useNavigate } from "react-router-dom";
+import { getCarts } from "../../services/services";
 import { GlobalState } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 // mui
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, CardActionArea } from "@mui/material";
 
 export const All: FC = () => {
   const global = useContext(GlobalState);
+  const navigate = useNavigate();
   const fetchBaskets = async () => {
     try {
-      const baskets = await getBaskets();
-      return await global.globalGetBaskets(baskets.data);
+      const carts = await getCarts();
+      return global.globalGetCarts(carts.data.carts);
     } catch (e) {
       console.log(e);
     }
@@ -20,14 +22,21 @@ export const All: FC = () => {
     fetchBaskets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(global.globalBaskets);
-  //const howManyCards = global.globalBaskets.length <= 2 ? 6 : 4;
-  const showBasketCards: JSX.Element[] = global.globalBaskets.map((item) => {
+  console.log(global.globalCarts);
+  const showMore = (id: number): void => {
+    navigate(`/${id}`);
+  };
+  const showCards: JSX.Element[] = global.globalCarts.map((item) => {
     return (
-      <Grid item md={3} key={item.id}>
-        <CardComponent id={item.id} name={item.name} products={item.products}>
-          <Button></Button>
-        </CardComponent>
+      <Grid item xs={12} sm={6} md={4} key={item.id}>
+        <div onClick={() => showMore(item.id!)}>
+          <CardActionArea>
+            <CardComponent
+              id={item.id}
+              products={item.products}
+            ></CardComponent>
+          </CardActionArea>
+        </div>
       </Grid>
     );
   });
@@ -35,7 +44,7 @@ export const All: FC = () => {
     <>
       {" "}
       <Grid container spacing={3}>
-        {showBasketCards}
+        {showCards}
       </Grid>
     </>
   );

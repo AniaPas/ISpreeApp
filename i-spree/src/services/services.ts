@@ -1,11 +1,23 @@
 import axios from "axios";
-const API = "http://localhost:3000";
-const getBaskets = () => {
-  const apiBaskets = `${API}/basket`;
+import { PayloadInterface } from "../Store/GlobalStore";
+
+const API = "https://dummyjson.com";
+const getCarts = () => {
+  const apiBaskets = `${API}/carts`;
   return axios.get(apiBaskets);
 };
-const getOneBasket = (id: string) => {
-  const apiOneBasket = `${API}/basket/${id}`;
+const getOneCart = (id: string) => {
+  const apiOneBasket = `${API}/carts/${id}`;
   return axios.get(apiOneBasket);
 };
-export { getBaskets, getOneBasket };
+const addCart = (payload: PayloadInterface) => {
+  const addedCartUrl = `${API}/carts/add`;
+  return axios.post(addedCartUrl, payload, {
+    headers: { "Content-Type": "application/json" },
+  });
+};
+const deleteCart = (id: string) => {
+  const apiCart = `${API}/carts/${id}`;
+  return axios.delete(apiCart);
+};
+export { getCarts, getOneCart, addCart, deleteCart };

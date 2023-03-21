@@ -1,37 +1,56 @@
 import { useState, createContext, FC } from "react";
 export interface ProductInterface {
-  product_name: string;
-  regular_price: number;
-  discount_price: number;
-}
-export interface BasketsInterface {
   id: number;
-  name: string;
-  products: ProductInterface[];
-  children: React.ReactNode;
+  title: string;
+  price: number;
+  quantity: number;
+  total: number;
+  discountPercentage: number;
+  discountedPrice: number;
 }
-
+export interface CartInterface {
+  id: number;
+  products: ProductInterface[];
+}
+export interface PayloadInterface {
+  userId: string;
+  products: { id: string; quantity: string }[];
+}
+// export interface RequestHeadersInterface {
+//   headers: { "Content-Type": string };
+// }
 interface GlobalStateInterface {
-  globalBaskets: BasketsInterface[];
-  globalGetBaskets: (data: BasketsInterface[]) => void;
+  globalCarts: CartInterface[];
+  globalGetCarts: (data: CartInterface[]) => void;
+  // globalOneCart: CartInterface;
+  // globalGetOneCart: (data: CartInterface) => void;
 }
 interface GlobalStoreInterface {
   children: JSX.Element | JSX.Element[];
 }
 export const GlobalState = createContext<GlobalStateInterface>({
-  globalBaskets: [],
-  globalGetBaskets: () => {},
+  globalCarts: [],
+  globalGetCarts: () => {},
+  // globalOneCart: {},
+  // globalGetOneCart: () => {},
 });
 
 export const GlobalStore: FC<GlobalStoreInterface> = (props) => {
-  const [baskets, setBaskets] = useState<BasketsInterface[]>([]);
+  const [carts, setCarts] = useState<CartInterface[]>([]);
 
-  const getBaskets = (data: BasketsInterface[]) => {
-    setBaskets(data);
+  const getCarts = (data: CartInterface[]) => {
+    setCarts(data);
   };
+  // const [oneCart, setOneCart] = useState<CartInterface>();
+
+  // const getOneCart = (data: CartInterface) => {
+  //   setOneCart(data);
+  // };
   const providerValue = {
-    globalBaskets: baskets,
-    globalGetBaskets: getBaskets,
+    globalCarts: carts,
+    globalGetCarts: getCarts,
+    // globalOneCart: oneCart,
+    // globalGetOneCart: getOneCart,
   };
   return (
     <GlobalState.Provider value={providerValue}>
