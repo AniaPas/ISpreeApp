@@ -6,7 +6,7 @@ import { CartInterface } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 import { Products } from "../../components/Products/Products";
 //MUI
-import { Button, Grid, Box } from "@mui/material/";
+import { Button, Grid, Box, Typography } from "@mui/material/";
 
 //const { id } = useParams();
 export const OneCart: FC = () => {
@@ -59,20 +59,25 @@ export const OneCart: FC = () => {
     <>
       <Grid
         container
+        spacing={3}
         direction='row'
-        justifyContent='space-between'
+        justifyContent='space-around'
         alignItems='center'
+        flexWrap='wrap'
       >
         <Grid item xs={12} md={6}>
           <CardComponent id={cart.id} products={cart.products} />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <p>{createProductList}</p>
+          <Typography color='secondary' fontSize='large'>
+            {createProductList}
+          </Typography>
         </Grid>
         <Button
           size='small'
           color='primary'
+          variant='contained'
           onClick={() => removeCart(cart.id)}
         >
           REMOVE AND GO BACK TO CARTS

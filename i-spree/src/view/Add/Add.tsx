@@ -108,8 +108,8 @@ export const Add = () => {
   return (
     // <div>Ania</div>
 
-    <Box component='form' ref={form} display='flex' flexDirection='row'>
-      <FormControl>
+    <Box component='form' ref={form} display='flex' flexDirection='column'>
+      <FormControl color="secondary">
         <InputLabel htmlFor={idForUser}>Provide your ID number</InputLabel>
         <Input id={idForUser} />
         <FormHelperText id='my-helper-text'>Enter your ID</FormHelperText>

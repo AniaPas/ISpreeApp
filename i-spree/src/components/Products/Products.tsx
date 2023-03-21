@@ -32,8 +32,8 @@ export const Products: FC<ProductsProps> = ({ products }) => {
         }}
       />
       <CartesianGrid stroke='#eee' strokeDasharray='5 5' />
-      <Line type='monotone' dataKey='price' stroke='#8884d8' />
-      <Line type='monotone' dataKey='discountedPrice' stroke='#82ca9d' />
+      <Line type='monotone' dataKey='price' stroke='#8bc34a' />
+      <Line type='monotone' dataKey='discountedPrice' stroke='#ffc400' />
       <Tooltip />
     </LineChart>
   );
