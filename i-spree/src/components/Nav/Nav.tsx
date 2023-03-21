@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 
 export const Nav = () => {
   return (
-    <AppBar position='sticky' sx={{ marginBottom: 5 }}>
+    <AppBar position='sticky' sx={{ marginBottom: 5 }} color='primary'>
       <Toolbar>
         <IconButton
           size='large'

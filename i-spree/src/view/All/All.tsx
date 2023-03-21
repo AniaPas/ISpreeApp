@@ -28,7 +28,7 @@ export const All: FC = () => {
   };
   const showCards: JSX.Element[] = global.globalCarts.map((item) => {
     return (
-      <Grid item xs={12} sm={6} md={4} key={item.id}>
+      <Grid item xs={12} sm={6} md={3} key={item.id}>
         <div onClick={() => showMore(item.id!)}>
           <CardActionArea>
             <CardComponent

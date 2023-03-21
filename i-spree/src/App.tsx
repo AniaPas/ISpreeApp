@@ -16,14 +16,25 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
-  const darkTheme = createTheme({
+  const theme = createTheme({
     palette: {
-      mode: "dark",
+      primary: {
+        light: "#a2cf6e",
+        main: "#8bc34a",
+        dark: "#618833",
+        contrastText: "#000",
+      },
+      secondary: {
+        light: "#ff7961",
+        main: "#f44336",
+        dark: "#b28900",
+        contrastText: "#000",
+      },
     },
   });
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <GlobalStore>
         <div className={style.app}>
