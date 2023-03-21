@@ -4,7 +4,7 @@ import { getCarts } from "../../services/services";
 import { GlobalState } from "../../Store/GlobalStore";
 import { CardComponent } from "../../components/CardComponent/CardComponent";
 // mui
-import { Grid, Button, CardActionArea } from "@mui/material";
+import { Grid, CardActionArea } from "@mui/material";
 
 export const All: FC = () => {
   const global = useContext(GlobalState);
